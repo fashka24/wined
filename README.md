@@ -1,7 +1,7 @@
 # Wined
 
-Wined is a simple ed-inspired text editor for Unix. It is cross-platform and requires no dependencies. <p>
-[go to docs.](https://github.com/fashka24/wined/docs)
+Wined is a simple ed-inspired text editor. It is cross-platform and requires no dependencies. <p>
+[go to docs](https://github.com/fashka24/wined/tree/master/docs)
 
 ## Get started
 
