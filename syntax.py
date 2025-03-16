@@ -24,13 +24,17 @@ BRIGHT_WHITE = "\033[97m"
 # syntaxs
 
 py_syntax = {
-    "def": f"{BLUE}def{RESET}",
-    "for": f"{BLUE}for{RESET}",
+    "or": f"{BLUE}or{RESET}",
+    "is": f"{BLUE}is{RESET}",
     "if": f"{MAGENTA}if{RESET}",
+    "def": f"{BLUE}def{RESET}",
+    "and": f"{BLUE}and{RESET}",
+    "for": f"{BLUE}for{RESET}",
     "elif": f"{MAGENTA}elif{RESET}",
+    "with": f"{BLUE}with{RESET}",
     "else": f"{MAGENTA}else{RESET}",
-    "import": f"{MAGENTA}import{RESET}",
     "while": f"{BLUE}while{RESET}",
+    "import": f"{MAGENTA}import{RESET}",
     "(": f"{YELLOW}({RESET}",
     ")": f"{YELLOW}){RESET}",
     "{": f"{CYAN}{'{'}{RESET}",
@@ -42,12 +46,41 @@ py_syntax = {
     ">": f"{BRIGHT_CYAN}>{RESET}",
     "<": f"{BRIGHT_CYAN}<{RESET}",
     "==": f"{BRIGHT_CYAN}=={RESET}",
-    "or": f"{BLUE}or{RESET}",
-    "and": f"{BLUE}and{RESET}",
     "\n": f"{RESET}\n",
 }
+js_syntax = {
+    "if": f"{MAGENTA}if{RESET}",
+    "for": f"{BLUE}for{RESET}",
+    "with": f"{BLUE}with{RESET}",
+    "else": f"{MAGENTA}else{RESET}",
+    "while": f"{BLUE}while{RESET}",
+    "import": f"{MAGENTA}import{RESET}",
+    "function": f"{BLUE}function{RESET}",
+    "(": f"{YELLOW}({RESET}",
+    ")": f"{YELLOW}){RESET}",
+    "{": f"{CYAN}{'{'}{RESET}",
+    "}": f"{CYAN}{'}'}{RESET}",
+    "//": f"{GREEN}//",
+    "&&": f"{BLUE}and{RESET}",
+    "||": f"{BLUE}or{RESET}",
+    ">": f"{BRIGHT_CYAN}>{RESET}",
+    "<": f"{BRIGHT_CYAN}<{RESET}",
+    "=": f"{BRIGHT_CYAN}={RESET}",
+    ">=": f"{BRIGHT_CYAN}>={RESET}",
+    "<=": f"{BRIGHT_CYAN}<={RESET}",
+    "=>": f"{BRIGHT_CYAN}=>{RESET}",
+    "==": f"{BRIGHT_CYAN}=={RESET}",
+    ">==": f"{BRIGHT_CYAN}>=={RESET}",
+    "<==": f"{BRIGHT_CYAN}<=={RESET}",
+    "===": f"{BRIGHT_CYAN}==={RESET}",
+    "\n": f"{RESET}\n",
+}
+html_syntax = {
+    "<": f"{BRIGHT_CYAN}<{RESET}", "/>": f"{BRIGHT_CYAN}/>{RESET}"
+}
 
-# syntax aanalyze
+# syntax analyze
+sntxs = { "Python": py_syntax, "JavaScript": js_syntax, "HTML": html_syntax }
 
 def replace_substring(match):
     return f'{ORANGE}"{match.group(0)[1:-1]}"{RESET}'
@@ -57,9 +90,11 @@ def replace_substring2(match):
 def do_syntax(syntax_type, source_string: str):
     current_syntax = {}
     
-    if syntax_type == "Python":
-        current_syntax = py_syntax
-
+    try:
+        if syntax_type != "unk":
+            current_syntax = sntxs[syntax_type]
+    except KeyError:
+        current_syntax = {}
     for k, v in current_syntax.items():
         source_string = source_string.replace(k, v)
     

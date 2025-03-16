@@ -22,7 +22,7 @@ def get_syntax_by_filename(filename):
         'go': 'Go',
         'php': 'PHP',
         'sh': 'Bash',
-        'txt': 'Текстовый файл',
+        'txt': 'Text',
     }
     
     return syntax_mapping.get(file_extension, f"unk")
@@ -48,6 +48,39 @@ def update_multiline_string(multiline_string, line_number, new_line):
     
     return '\n'.join(lines)
 
+
+def add_specific_line_to_multiline_string(multiline_string, line_number, line_to_add):
+    lines = multiline_string.split('\n')
+
+    if line_number >= len(lines):
+        lines.append(line_to_add)
+    elif 0 <= line_number < len(lines):
+        lines.insert(line_number, line_to_add)
+    else:
+        print(f"wined: {RED}error{RESET}: line by number {line_number} not exists")
+
+    return '\n'.join(lines)
+
+
+def remove_line_from_multiline_string(multiline_string, line_number):
+    lines = multiline_string.split('\n')
+
+    if 0 <= line_number < len(lines):
+        lines.pop(line_number)
+    else:
+        print(f"wined: {RED}error{RESET}: line by number {line_number} not exists")
+
+    return '\n'.join(lines)
+
+
+def get_line(multiline_string, line_number):
+    lines = multiline_string.strip().split('\n')
+
+    if 0 <= line_number < len(lines):
+        return lines[line_number]
+    else:
+        print(f"wined: {RED}error{RESET}: line by number {line_number} not exists")
+
 current = ""
 
 def print_beautifull(text, size = 12123123123):
@@ -66,7 +99,7 @@ def wined_main():
 
     while True:
         try:
-            inp = input("> ")
+            inp = input("> ").replace("\t", '    ')
             inpl = inp.split(" ")
             inpl1 = inpl[0]
 
@@ -78,6 +111,12 @@ def wined_main():
                     f.close()
             elif inpl1 == "cls" or inpl1 == "clear-screen":
                 os.system("cls" if os.name == "nt" else "clear")
+            elif inpl1 == "a" or inpl1 == "a-source":
+                line_number = int(inpl[1]) - 1
+
+                print(f" {'-'*11} {len(get_line(file_source, line_number))} bytes {'-'*11}")
+                print(f'{line_number} | {get_line(file_source, line_number)}')
+                print(f" {"-"*32}")
             elif inpl1 == "s" or inpl1 == "source":
                 print_beautifull(file_source)
             elif inpl1 == "sn":
@@ -88,6 +127,14 @@ def wined_main():
                 print_beautifull(file_source.replace("\n", "$\n").replace("\t", "%\t"), size=len(file_source))
             elif inpl1 == "cl_file":
                 print(f'the file in use: {source_file_name}')
+            elif inpl1 == "dl" or inpl1 == "delete":
+                line_number = int(inpl[1]) - 1
+
+                file_source = remove_line_from_multiline_string(file_source, line_number)
+            elif inpl1 == "nl" or inpl1 == "new-line":
+                line_number = int(inpl[1])
+
+                file_source = add_specific_line_to_multiline_string(file_source, line_number, '')
             elif inpl1 == "pra": # py array [...] to normal
                 source_arr = ''.join(inpl[1::])
 
@@ -133,6 +180,18 @@ def wined_main():
                 with open(source_file_name, 'a', encoding='utf-8') as f:
                     print("writen ", f.write(text + '\n'))
                     f.close()
+            elif inpl1 == "nlw" or inpl1 == "new-line-write":
+                line_number = int(inpl[1])
+                text = ' '.join(inpl[2::])
+
+                file_source = add_specific_line_to_multiline_string(file_source, line_number, '')
+
+                line_number += 1
+
+                file_source = update_multiline_string(file_source, line_number=line_number - 1, new_line=text)
+                with open(source_file_name, 'w', encoding='utf-8') as f:
+                    print("writen ", f.write(file_source))
+                    f.close()
             elif inpl1 == "lw" or inpl1 == "line-write":
                 line_number = int(inpl[1])
                 text = ' '.join(inpl[2::])
@@ -170,6 +229,14 @@ def wined_main():
                     f.close()
             elif inpl1 == "q" or inpl1 == "quit":
                 exit(0)
+            with open (source_file_name, "r", encoding='utf-8') as f1:
+                rsd = f1.read()
+                if rsd != file_source:
+                    with open (source_file_name, "w", encoding='utf-8') as f:
+                        a = f.write(file_source)
+                        if a != 0:
+                            print("writen", a)
+                        f.close()
         except IndexError:
             print(f"wined: {RED}error{RESET}: the arguments for {inpl1} was excepted")
         except KeyboardInterrupt:
