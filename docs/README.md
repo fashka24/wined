@@ -38,12 +38,13 @@ pyinstaller --onefile wined.py
 ```
 
 ### For windows 
-<p> create system directory with name `Wined` in `C:\Program Files`
-and move file `dist\wined.exe` to it. </p>
-Next step open `Set environment variable` and add path `C:\Program Files\Wined` to Path
+create system directory with name `Wined` in `C:\Program Files` 
+and move file `dist\wined.exe` to it.
+
+next step open `Set environment variable` and add path `C:\Program Files\Wined` to Path
 
 ### For linux
-move `dist/wined` to /usr/bin
+move `dist/wined` to `/usr/bin`
 ```shell
 sudo mv dist/wined /usr/bin/wined
 ```
