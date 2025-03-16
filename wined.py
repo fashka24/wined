@@ -1,17 +1,66 @@
-import os
+import os, ast, syntax
 
 RED = "\033[31m"
 RESET = "\033[0m"
 
+def get_syntax_by_filename(filename):
+    _, file_extension = os.path.splitext(filename)
+    
+    file_extension = file_extension[1:].lower()
+    
+    syntax_mapping = {
+        'py': 'Python',
+        'js': 'JavaScript',
+        'html': 'HTML',
+        'css': 'CSS',
+        'json': 'JSON',
+        'xml': 'XML',
+        'java': 'Java',
+        'cpp': 'C++',
+        'c': 'C',
+        'rb': 'Ruby',
+        'go': 'Go',
+        'php': 'PHP',
+        'sh': 'Bash',
+        'txt': 'Текстовый файл',
+    }
+    
+    return syntax_mapping.get(file_extension, f"unk")
+
+def parse_array_string(array_string):
+    try:
+        array = ast.literal_eval(array_string)
+        if isinstance(array, list):
+            return array
+        else:
+            raise ValueError(f"wined: {RED}error{RESET}: can't compile string to array")
+    except (SyntaxError, ValueError) as e:
+        print(f"wined: {RED}error{RESET}: string to array compilation: {e}")
+        return []
+
+def update_multiline_string(multiline_string, line_number, new_line):
+    lines = multiline_string.split('\n')
+    
+    if 0 <= line_number < len(lines):
+        lines[line_number] = new_line
+    else:
+        print(f"wined: {RED}error{RESET}: line by number {line_number} not exists")
+    
+    return '\n'.join(lines)
+
+current = ""
+
 def print_beautifull(text, size = 12123123123):
     if size == 12123123123:
         size = len(text)
+    asd = syntax.do_syntax(current, text).split('\n')
     print(f" {'-'*11} {size} bytes {'-'*11}") # ----------- 99 bytes -----------
-    for i in range(len(text.split('\n'))):
-        print(f"{i+1} | {text.split('\n')[i]}")
+    for i in range(len(asd)):
+        print(f"{i+1} | {asd[i]}")
     print(f" {'-'*32}") 
 
 def wined_main():
+    global current
     file_source = ""
     source_file_name = ""
 
@@ -23,6 +72,7 @@ def wined_main():
 
             if inpl1 == "o" or inpl1 == "open":
                 source_file_name = inpl[1]
+                current = get_syntax_by_filename(source_file_name)
                 with open(source_file_name, 'r', encoding="utf-8") as f:
                     file_source = f.read()
                     f.close()
@@ -38,38 +88,88 @@ def wined_main():
                 print_beautifull(file_source.replace("\n", "$\n").replace("\t", "%\t"), size=len(file_source))
             elif inpl1 == "cl_file":
                 print(f'the file in use: {source_file_name}')
+            elif inpl1 == "pra": # py array [...] to normal
+                source_arr = ''.join(inpl[1::])
+
+                print("array", ' '.join(parse_array_string(source_arr)))
+            elif inpl1 == "par": # to py array [...]
+                source_arr = inpl[1::]
+
+                print("array", f'[ "{'", "'.join(source_arr)}" ]')
+            elif inpl1 == "cv_bin":
+                nums = list(map(int, inpl[1::]))
+                binary_array = [bin(num)[2:] for num in nums]
+
+                print("binary", binary_array)
+            elif inpl1 == "cv_hex":
+                nums = list(map(int, inpl[1::]))
+                hex_array = [hex(num)[2:].upper() for num in nums]
+
+                print("hex", hex_array)
+            elif inpl1 == "cv_X":
+                nums = list(map(int, inpl[1::]))
+                base12_array = [format(num, 'X') if num < 12 else format(num, 'X') for num in nums]
+                base12_array = [''.join([str(int(digit, 16)) if int(digit, 16) < 12 else chr(ord('A') + int(digit, 16) - 10) for digit in format(num, 'X')]) for num in nums]
+
+                print("X", base12_array)
+            elif inpl1 == "cv_chr":
+                nums = list(map(int, inpl[1::]))
+                chr_array = list(map(chr, nums))
+
+                print("chr", chr_array)
+            elif inpl1 == "cv_ord":
+                chrs = inpl[1::]
+                ord_array = list(map(ord, chrs))
+
+                print("ord", ord_array)
             elif inpl1 == "exec" or inpl1 == "execute":
                 text = ' '.join(inpl[1::])
-
+            
                 os.system(text)
             elif inpl1 == "w" or inpl1 == "write":
                 text = ' '.join(inpl[1::])
 
                 file_source += text + '\n'
                 with open(source_file_name, 'a', encoding='utf-8') as f:
-                    f.write(text + '\n')
+                    print("writen ", f.write(text + '\n'))
+                    f.close()
+            elif inpl1 == "lw" or inpl1 == "line-write":
+                line_number = int(inpl[1])
+                text = ' '.join(inpl[2::])
+
+                file_source = update_multiline_string(file_source, line_number=line_number-1, new_line=text)
+                with open(source_file_name, 'w', encoding='utf-8') as f:
+                    print("writen ", f.write(file_source))
                     f.close()
             elif inpl1 == "wn" or inpl1 == "write-nl":
                 text = ' '.join(inpl[1::])
 
                 file_source += text + '\n'
                 with open(source_file_name, 'a', encoding='utf-8') as f:
-                    f.write(text + '\n')
+                    print("writen ", f.write(text + '\n'))
                     f.close()
             elif inpl1 == "rw" or inpl1 == "rewrite":
                 text = ' '.join(inpl[1::])
 
                 file_source = text + '\n'
                 with open(source_file_name, 'w', encoding='utf-8') as f:
-                    f.write(text + '\n')
+                    print("writen ", f.write(text + '\n'))
                     f.close()
             elif inpl1 == "cf" or inpl1 == "clear-file":
                 text = ''
-
                 file_source = text
+
                 with open(source_file_name, 'w', encoding='utf-8') as f:
                     f.write(text)
                     f.close()
+            elif inpl1 == "mkf" or inpl1 == "make-file":
+                text = inpl[1]
+
+                with open(text, 'w', encoding='utf-8') as f:
+                    f.write('')
+                    f.close()
+            elif inpl1 == "q" or inpl1 == "quit":
+                exit(0)
         except IndexError:
             print(f"wined: {RED}error{RESET}: the arguments for {inpl1} was excepted")
         except KeyboardInterrupt:
