@@ -22,6 +22,7 @@
 | `wn [text]`                        | Write the specified text to an open file with a new line   |
 | `f/find [text]`                    | Finds a substring from the text of the file                |
 | `r/replace [word] [text]`          | Replace a word to text                                     | 
+| `dl/delete [line]`                 | Delete line                                                | 
 
 ## 📖 Explanations
 

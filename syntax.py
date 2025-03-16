@@ -48,21 +48,20 @@ py_syntax = {
     "==": f"{BRIGHT_CYAN}=={RESET}",
     "\n": f"{RESET}\n",
 }
-js_syntax = {
+bash_syntax = {
     "if": f"{MAGENTA}if{RESET}",
+    "fi": f"{MAGENTA}if{RESET}",
     "for": f"{BLUE}for{RESET}",
-    "with": f"{BLUE}with{RESET}",
     "else": f"{MAGENTA}else{RESET}",
     "while": f"{BLUE}while{RESET}",
-    "import": f"{MAGENTA}import{RESET}",
-    "function": f"{BLUE}function{RESET}",
     "(": f"{YELLOW}({RESET}",
     ")": f"{YELLOW}){RESET}",
     "{": f"{CYAN}{'{'}{RESET}",
     "}": f"{CYAN}{'}'}{RESET}",
     "//": f"{GREEN}//",
-    "&&": f"{BLUE}and{RESET}",
-    "||": f"{BLUE}or{RESET}",
+    "&&": f"{BLUE}&&{RESET}",
+    "||": f"{BLUE}||{RESET}",
+    "|": f"{BLUE}|{RESET}",
     ">": f"{BRIGHT_CYAN}>{RESET}",
     "<": f"{BRIGHT_CYAN}<{RESET}",
     "=": f"{BRIGHT_CYAN}={RESET}",
@@ -75,12 +74,129 @@ js_syntax = {
     "===": f"{BRIGHT_CYAN}==={RESET}",
     "\n": f"{RESET}\n",
 }
+js_syntax = {
+    "if": f"{MAGENTA}if{RESET}",
+    "for": f"{BLUE}for{RESET}",
+    "var": f"{BLUE}for{RESET}",
+    "let": f"{BLUE}for{RESET}",
+    "with": f"{BLUE}with{RESET}",
+    "else": f"{MAGENTA}else{RESET}",
+    "while": f"{BLUE}while{RESET}",
+    "import": f"{MAGENTA}import{RESET}",
+    "function": f"{BLUE}function{RESET}",
+    "(": f"{YELLOW}({RESET}",
+    ")": f"{YELLOW}){RESET}",
+    "{": f"{CYAN}{'{'}{RESET}",
+    "}": f"{CYAN}{'}'}{RESET}",
+    "//": f"{GREEN}//",
+    "&&": f"{BLUE}&&{RESET}",
+    "||": f"{BLUE}||{RESET}",
+    ">": f"{BRIGHT_CYAN}>{RESET}",
+    "<": f"{BRIGHT_CYAN}<{RESET}",
+    "=": f"{BRIGHT_CYAN}={RESET}",
+    ">=": f"{BRIGHT_CYAN}>={RESET}",
+    "<=": f"{BRIGHT_CYAN}<={RESET}",
+    "=>": f"{BRIGHT_CYAN}=>{RESET}",
+    "==": f"{BRIGHT_CYAN}=={RESET}",
+    ">==": f"{BRIGHT_CYAN}>=={RESET}",
+    "<==": f"{BRIGHT_CYAN}<=={RESET}",
+    "===": f"{BRIGHT_CYAN}==={RESET}",
+    "\n": f"{RESET}\n",
+}
+java_syntax = {
+    "if": f"{MAGENTA}if{RESET}",
+    "do": f"{MAGENTA}do{RESET}",
+    "for": f"{BLUE}for{RESET}",
+    "else": f"{MAGENTA}else{RESET}",
+    "while": f"{BLUE}while{RESET}",
+    "import": f"{MAGENTA}import{RESET}",
+    "instanceof": f"{MAGENTA}instanceof{RESET}",
+    "(": f"{YELLOW}({RESET}",
+    ")": f"{YELLOW}){RESET}",
+    "{": f"{CYAN}{'{'}{RESET}",
+    "}": f"{CYAN}{'}'}{RESET}",
+    "//": f"{GREEN}//",
+    "&&": f"{BLUE}&&{RESET}",
+    "||": f"{BLUE}||{RESET}",
+    ">": f"{BRIGHT_CYAN}>{RESET}",
+    "<": f"{BRIGHT_CYAN}<{RESET}",
+    "=": f"{BRIGHT_CYAN}={RESET}",
+    ">=": f"{BRIGHT_CYAN}>={RESET}",
+    "<=": f"{BRIGHT_CYAN}<={RESET}",
+    "=>": f"{BRIGHT_CYAN}=>{RESET}",
+    "==": f"{BRIGHT_CYAN}=={RESET}",
+    "\n": f"{RESET}\n",
+}
+cpp_syntax = {
+    "if": f"{MAGENTA}if{RESET}",
+    "do": f"{MAGENTA}do{RESET}",
+    "for": f"{BLUE}for{RESET}",
+    "else": f"{MAGENTA}else{RESET}",
+    "while": f"{BLUE}while{RESET}",
+    "#define": f"{MAGENTA}#define{RESET}",
+    "#pragma": f"{MAGENTA}#pragma{RESET}",
+    "#ifdef": f"{MAGENTA}#ifdef{RESET}",
+    "#endif": f"{MAGENTA}#endif{RESET}",
+    "#ifndef": f"{MAGENTA}#ifndef{RESET}",
+    "#include": f"{MAGENTA}#include{RESET}",
+    "(": f"{YELLOW}({RESET}",
+    ")": f"{YELLOW}){RESET}",
+    "{": f"{CYAN}{'{'}{RESET}",
+    "}": f"{CYAN}{'}'}{RESET}",
+    "//": f"{GREEN}//",
+    "&&": f"{BLUE}&&{RESET}",
+    "||": f"{BLUE}||{RESET}",
+    ">": f"{BRIGHT_CYAN}>{RESET}",
+    "<": f"{BRIGHT_CYAN}<{RESET}",
+    "=": f"{BRIGHT_CYAN}={RESET}",
+    ">=": f"{BRIGHT_CYAN}>={RESET}",
+    "<=": f"{BRIGHT_CYAN}<={RESET}",
+    "==": f"{BRIGHT_CYAN}=={RESET}",
+    "\n": f"{RESET}\n",
+}
 html_syntax = {
-    "<": f"{BRIGHT_CYAN}<{RESET}", "/>": f"{BRIGHT_CYAN}/>{RESET}"
+    "<": f"{BRIGHT_CYAN}<{RESET}",
+    "=": f"{BRIGHT_CYAN}={RESET}",
+    "/>": f"{BRIGHT_CYAN}/>{RESET}"
+}
+xml_syntax = {
+    "<": f"{BRIGHT_CYAN}<{RESET}",
+    "=": f"{BRIGHT_CYAN}={RESET}",
+    "/>": f"{BRIGHT_CYAN}/>{RESET}"
+}
+css_syntax = {
+    ";": f"{YELLOW};{RESET}",
+    "{": f"{CYAN}{'{'}{RESET}",
+    "}": f"{CYAN}{'}'}{RESET}",
+    "\n": f"{RESET}\n",
+}
+json_syntax = {
+    ",": f"{YELLOW};{RESET}",
+    ":": f"{YELLOW};{RESET}",
+    "{": f"{CYAN}{'{'}{RESET}",
+    "}": f"{CYAN}{'}'}{RESET}",
+    "[": f"{CYAN}{'['}{RESET}",
+    "]": f"{CYAN}{']'}{RESET}",
+    "\n": f"{RESET}\n",
+}
+go_syntax = {
+    ":=": f"{CYAN}go{RESET}"
 }
 
+
 # syntax analyze
-sntxs = { "Python": py_syntax, "JavaScript": js_syntax, "HTML": html_syntax }
+sntxs = {
+    "Python": py_syntax,
+    "JavaScript": js_syntax,
+    "HTML": html_syntax,
+    "CSS": css_syntax,
+    "JSON": json_syntax,
+    "XML": xml_syntax,
+    "Java": java_syntax,
+    "C++": cpp_syntax, "C": cpp_syntax,
+    "Go": go_syntax,
+    "Bash": bash_syntax,
+}
 
 def replace_substring(match):
     return f'{ORANGE}"{match.group(0)[1:-1]}"{RESET}'
