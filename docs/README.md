@@ -20,7 +20,7 @@
 | `w/write [text]`                   | Write the specified text to an open file                   |
 | `lw/line-write [line] [text]`      | Write the specified text at the specified line             |
 | `wn [text]`                        | Write the specified text to an open file with a new line   |
-| `f [text]`                         | Finds a substring from the text of the file                |
+| `f/find [text]`                    | Finds a substring from the text of the file                |
 
 ## 📖 Explanations
 
