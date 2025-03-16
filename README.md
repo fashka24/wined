@@ -24,3 +24,5 @@ in wined open test file and print it
 > o test.py
 > s
 ```
+
+<img src="img/Скриншот 16-03-2025 154723.jpg">

@@ -42,8 +42,8 @@ py_syntax = {
     ">": f"{BRIGHT_CYAN}>{RESET}",
     "<": f"{BRIGHT_CYAN}<{RESET}",
     "==": f"{BRIGHT_CYAN}=={RESET}",
-    "or": f"{MAGENTA}or{RESET}",
-    "and": f"{MAGENTA}and{RESET}",
+    "or": f"{BLUE}or{RESET}",
+    "and": f"{BLUE}and{RESET}",
     "\n": f"{RESET}\n",
 }
 
