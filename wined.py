@@ -151,6 +151,14 @@ def wined_main():
 
                 print(f"""Found: {syntax.CYAN}{file_source.count(text)}{RESET}""")
                 find_and_print(file_source, text)
+            elif inpl1 == "r" or inpl1 == "replace":
+                word = inpl[1].strip()
+                print(word)
+                text = ' '.join(inpl[2::]).strip()
+                print(text)
+
+                print(f"""Replaced: {syntax.CYAN}{file_source.count(word)}{RESET}""")
+                file_source = file_source.replace(word, text)
             elif inpl1 == "dl" or inpl1 == "delete":
                 line_number = int(inpl[1]) - 1
 

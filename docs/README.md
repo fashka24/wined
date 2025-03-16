@@ -21,6 +21,7 @@
 | `lw/line-write [line] [text]`      | Write the specified text at the specified line             |
 | `wn [text]`                        | Write the specified text to an open file with a new line   |
 | `f/find [text]`                    | Finds a substring from the text of the file                |
+| `r/replace [word] [text]`          | Replace a word to text                                     | 
 
 ## 📖 Explanations
 
@@ -28,6 +29,7 @@
 - **[command]** - command for the terminal
 - **[path]** - path to the file
 - **[text]** - text
+- **[word]** - word
 
 ## Compilation and installation
 
