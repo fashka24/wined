@@ -1,4 +1,6 @@
-import os, ast, syntax
+import os, ast, syntax, sys
+
+from syntax import BRIGHT_YELLOW
 
 RED = "\033[31m"
 RESET = "\033[0m"
@@ -83,6 +85,14 @@ def get_line(multiline_string, line_number):
 
 current = ""
 
+def find_and_print(multiline_string, substring):
+    lines = multiline_string.splitlines()
+
+    filtered_lines_with_index = [(index, line.replace(substring, f"{syntax.BRIGHT_YELLOW}{substring}{RESET}")) for index, line in enumerate(lines) if substring in line]
+
+    for index, line in filtered_lines_with_index:
+        print(f"{index+1} | {line}")
+
 def print_beautifull(text, size = 12123123123):
     if size == 12123123123:
         size = len(text)
@@ -94,12 +104,13 @@ def print_beautifull(text, size = 12123123123):
 
 def wined_main():
     global current
+    inputer = "> "
     file_source = ""
     source_file_name = ""
 
     while True:
         try:
-            inp = input("> ").replace("\t", '    ')
+            inp = input(inputer).replace("\t", '    ')
             inpl = inp.split(" ")
             inpl1 = inpl[0]
 
@@ -127,6 +138,19 @@ def wined_main():
                 print_beautifull(file_source.replace("\n", "$\n").replace("\t", "%\t"), size=len(file_source))
             elif inpl1 == "cl_file":
                 print(f'the file in use: {source_file_name}')
+            elif inpl1 == "inp" or inpl1 == "input-text":
+                text = ' '.join(inpl[1::])
+
+                inputer = text
+            elif inpl1 == "rev" or inpl1 == "reverse":
+                text = ' '.join(inpl[1::])[::-1]
+
+                print(text)
+            elif inpl1 == "f" or inpl1 == "find":
+                text = ' '.join(inpl[1::])
+
+                print(f"""Found: {syntax.CYAN}{file_source.count(text)}{RESET}""")
+                find_and_print(file_source, text)
             elif inpl1 == "dl" or inpl1 == "delete":
                 line_number = int(inpl[1]) - 1
 
@@ -228,22 +252,23 @@ def wined_main():
                     f.write('')
                     f.close()
             elif inpl1 == "q" or inpl1 == "quit":
-                exit(0)
-            with open (source_file_name, "r", encoding='utf-8') as f1:
-                rsd = f1.read()
-                if rsd != file_source:
-                    with open (source_file_name, "w", encoding='utf-8') as f:
-                        a = f.write(file_source)
-                        if a != 0:
-                            print("writen", a)
-                        f.close()
+                sys.exit(0)
+            if source_file_name != "":
+                with open (source_file_name, "r", encoding='utf-8') as f1:
+                    rsd = f1.read()
+                    if rsd != file_source:
+                        with open (source_file_name, "w", encoding='utf-8') as f:
+                            a = f.write(file_source)
+                            if a != 0:
+                                print("writen", a)
+                            f.close()
         except IndexError:
             print(f"wined: {RED}error{RESET}: the arguments for {inpl1} was excepted")
         except KeyboardInterrupt:
             return
         except EOFError:
             print(f"wined: !{RED}error{RESET}: please not use pipe")
-            exit()
+            sys.exit()
         except Exception as e:
             print(f"{type(e)}: {e}")
 if __name__ == "__main__":

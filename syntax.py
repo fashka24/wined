@@ -86,6 +86,8 @@ def replace_substring(match):
     return f'{ORANGE}"{match.group(0)[1:-1]}"{RESET}'
 def replace_substring2(match):
     return f"{ORANGE}'{match.group(0)[1:-1]}'{RESET}"
+def replace_substring3(match):
+    return f"{ORANGE}`{match.group(0)[1:-1]}`{RESET}"
 
 def do_syntax(syntax_type, source_string: str):
     current_syntax = {}
@@ -97,8 +99,10 @@ def do_syntax(syntax_type, source_string: str):
         current_syntax = {}
     for k, v in current_syntax.items():
         source_string = source_string.replace(k, v)
-    
-    source_string = re.sub(r'"(.*?)"', replace_substring, source_string)
-    source_string = re.sub(r"'(.*?)'", replace_substring2, source_string)
+
+    if syntax_type != "unk":
+        source_string = re.sub(r'"(.*?)"', replace_substring, source_string)
+        source_string = re.sub(r"'(.*?)'", replace_substring2, source_string)
+        source_string = re.sub(r"`(.*?)`", replace_substring3, source_string)
 
     return source_string
