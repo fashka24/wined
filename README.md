@@ -8,7 +8,7 @@ Wined is an ed-inspired text editor. It is cross-platform and requires no depend
 clone the project
 
 ```shell
-git clone https://github.com/fashka24/wined
+git clone https://github.com/fashka24/wined.git
 cd wined
 ```
 

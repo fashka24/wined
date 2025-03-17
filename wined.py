@@ -14,7 +14,7 @@ commands = [
     "mkf",
     "nl",
     "nlw",
-    "o",
+    "o", "open",
     "rw",
     "s",
     "sn", "st",
@@ -22,7 +22,7 @@ commands = [
     "w",
     "lw",
     "wn",
-    "f",
+    "f", "find"
     "r",
     "dl",
     "csp"
