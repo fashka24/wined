@@ -1,6 +1,6 @@
 # Wined
 
-Wined is an ed-inspired text editor. It is cross-platform and requires no dependencies. <p>
+Wined is an ed-inspired text editor. It is cross-platform and requires no dependencies, it also has spell checking and syntax highlighting. <p>
 [go to docs](https://github.com/fashka24/wined/tree/master/docs)
 
 ## Get started

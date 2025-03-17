@@ -2,11 +2,13 @@
 
 import re, difflib
 
+lang_paths = [
+    "langs/en.txt"
+]
+
 def get_langs():
     delimiter_pattern = r"[;\n]"
-    lang_paths = [
-        "langs/en.txt"
-    ]
+
     lang_sources = []
     for path in lang_paths:
         with open(path, 'r', encoding='utf-8') as f:
