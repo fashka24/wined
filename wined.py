@@ -1,4 +1,4 @@
-import os, ast, syntax, sys, spell_check
+import os, ast, syntax, sys, spell_check, runner
 
 from syntax import BRIGHT_YELLOW
 
@@ -62,6 +62,7 @@ def parse_array_string(array_string):
         print(f"wined: {RED}error{RESET}: string to array compilation: {e}")
         return []
 
+
 def update_multiline_string(multiline_string, line_number, new_line):
     lines = multiline_string.split('\n')
 
@@ -105,6 +106,7 @@ def get_line(multiline_string, line_number):
     else:
         print(f"wined: {RED}error{RESET}: line by number {line_number} not exists")
 
+
 current = ""
 
 def find_and_print(multiline_string, substring):
@@ -114,6 +116,7 @@ def find_and_print(multiline_string, substring):
 
     for index, line in filtered_lines_with_index:
         print(f"{index+1} | {line}")
+
 
 def print_beautifull(text, size = 12123123123):
     if size == 12123123123:
@@ -132,6 +135,7 @@ def wined_main():
     inputer = "> "
     file_source = ""
     source_file_name = ""
+    std_args = []
 
     while True:
         try:
@@ -151,6 +155,13 @@ def wined_main():
                 smws = spell_check.do_spell_check(file_source)
                 for key, v in smws.items():
                     print(f"<{key}> similar <{', '.join(v)}>")
+            elif inpl1 == "set-args":
+                std_args = inpl[1::]
+                print("args", inpl[1::])
+            elif inpl1 == "r" or inpl1 == "run":
+                runner.do_run(current, source_file_name, std_args)
+            elif inpl1 == "B" or inpl1 == "build":
+                runner.do_build(current, source_file_name, std_args)
             elif inpl1 == "a" or inpl1 == "a-source":
                 line_number = int(inpl[1]) - 1
 
@@ -180,7 +191,7 @@ def wined_main():
 
                 print(f"""Found: {syntax.CYAN}{file_source.count(text)}{RESET}""")
                 find_and_print(file_source, text)
-            elif inpl1 == "r" or inpl1 == "replace":
+            elif inpl1 == "rp" or inpl1 == "replace":
                 word = inpl[1].strip()
                 text = ' '.join(inpl[2::]).strip()
 

@@ -2,28 +2,31 @@
 
 ## 🛠️ Commands
 
-| Command                            | Description                                                |
-|------------------------------------|------------------------------------------------------------|
-| `a/a-source [line]`                | Print the specified line by line                           |
-| `cls/clear-screen`                 | Clear the terminal screen                                  |
-| `cf/clear-file`                    | Completely clear an open file                              |
-| `exec/execute [command]`           | Execute the specified command in cmd/sh                    |
-| `cl_file`                          | Print the contents of an open file                         |
-| `mkf/make-file [path]`             | Create a new file at the specified path                    |
-| `nl/new-line [line]`               | Add an empty line at the specified line                    |
-| `nlw/new-line-write [line] [text]` | Add an empty line at the specified line and write the text |
-| `o/open [path]`                    | Open the file at the specified path                        |
-| `rw [text]`                        | Completely clear the file and write the specified text     |
-| `s/source`                         | Print the source code                                      |
-| `s[n/t]`                           | Print the source code with new lines (`sn`) or tabs (`st`) |
-| `snt/stn`                          | Print the source code with new lines and tabs              |
-| `w/write [text]`                   | Write the specified text to an open file                   |
-| `lw/line-write [line] [text]`      | Write the specified text at the specified line             |
-| `wn [text]`                        | Write the specified text to an open file with a new line   |
-| `f/find [text]`                    | Finds a substring from the text of the file                |
-| `r/replace [word] [text]`          | Replace a word to text                                     | 
-| `dl/delete [line]`                 | Delete line                                                | 
-| `csp/check-spell`                  | Check the spelling                                         | 
+| Command                         | Description                                                                        |
+|---------------------------------|------------------------------------------------------------------------------------|
+| `a/a-source [line]`             | Print the specified line by line                                                   |
+| `cls/clear-screen`              | Clear the terminal screen                                                          |
+| `cf/clear-file`                 | Completely clear an open file                                                      |
+| `exec/execute [command]`        | Execute the specified command in cmd/sh                                            |
+| `cl_file`                       | Print the contents of an open file                                                 |
+| `mkf/make-file [path]`          | Create a new file at the specified path                                            |
+| `nl/new-line [line]`            | Add an empty line at the specified line                                            |
+| `nlw/new-line-write [line] [text]` | Add an empty line at the specified line and write the text                      |
+| `o/open [path]`                 | Open the file at the specified path                                                |
+| `rw [text]`                     | Completely clear the file and write the specified text                             |
+| `s/source`                      | Print the source code                                                              |
+| `s[n/t]`                        | Print the source code with new lines (`sn`) or tabs (`st`)                         |
+| `snt/stn`                       | Print the source code with new lines and tabs                                      |
+| `w/write [text]`                | Write the specified text to an open file                                           |
+| `lw/line-write [line] [text]`   | Write the specified text at the specified line                                     |
+| `wn [text]`                     | Write the specified text to an open file with a new line                           |
+| `f/find [text]`                 | Finds a substring from the text of the file                                        |
+| `rp/replace [word] [text]`      | Replace a word to text                                                             | 
+| `dl/delete [line]`              | Delete line                                                                        | 
+| `csp/check-spell`               | Check the spelling                                                                 | 
+| `r/run`                         | Run                                                                                | 
+| `B/build`                       | Build                                                                              | 
+| `set-args`                      | Set arguments for run                                                              | 
 
 ## 📖 Explanations
 

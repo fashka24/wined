@@ -39,7 +39,7 @@ def do_spell_check(text, langs=["no"]):
             for txt_p in text_block:
                 if not txt_p in lang:
                     # print("2", txt_p) dev log
-                    similar_words = difflib.get_close_matches(txt_p, lang, n=3, cutoff=0.7)
+                    similar_words = difflib.get_close_matches(txt_p, lang, n=3, cutoff=0.633)
                     # print("1", txt_p) dev log
                     if len(similar_words) != 0:
                         result.update({txt_p: similar_words})
