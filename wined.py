@@ -5,11 +5,33 @@ from syntax import BRIGHT_YELLOW
 RED = "\033[31m"
 RESET = "\033[0m"
 
+commands = [
+    "a",
+    "cls",
+    "cf",
+    "exec",
+    "cl_file",
+    "mkf",
+    "nl",
+    "nlw",
+    "o",
+    "rw",
+    "s",
+    "sn", "st",
+    "snt", "stn"
+    "w",
+    "lw",
+    "wn",
+    "f",
+    "r",
+    "dl",
+    "csp"
+]
 def get_syntax_by_filename(filename):
     _, file_extension = os.path.splitext(filename)
-    
+
     file_extension = file_extension[1:].lower()
-    
+
     syntax_mapping = {
         'py': 'Python',
         'js': 'JavaScript',
@@ -26,7 +48,7 @@ def get_syntax_by_filename(filename):
         'sh': 'Bash',
         'txt': 'Text',
     }
-    
+
     return syntax_mapping.get(file_extension, f"unk")
 
 def parse_array_string(array_string):
@@ -42,12 +64,12 @@ def parse_array_string(array_string):
 
 def update_multiline_string(multiline_string, line_number, new_line):
     lines = multiline_string.split('\n')
-    
+
     if 0 <= line_number < len(lines):
         lines[line_number] = new_line
     else:
         print(f"wined: {RED}error{RESET}: line by number {line_number} not exists")
-    
+
     return '\n'.join(lines)
 
 
@@ -100,7 +122,9 @@ def print_beautifull(text, size = 12123123123):
     print(f" {'-'*11} {size} bytes {'-'*11}") # ----------- 99 bytes -----------
     for i in range(len(asd)):
         print(f"{i+1} | {asd[i]}")
-    print(f" {'-'*32}") 
+    print(f" {'-'*32}")
+
+
 
 def wined_main():
     global current
@@ -124,7 +148,9 @@ def wined_main():
             elif inpl1 == "cls" or inpl1 == "clear-screen":
                 os.system("cls" if os.name == "nt" else "clear")
             elif inpl1 == "csp" or inpl1 == "check-spell":
-                spell_check.do_spell_check(file_source)
+                smws = spell_check.do_spell_check(file_source)
+                for key, v in smws.items():
+                    print(f"<{key}> similar <{', '.join(v)}>")
             elif inpl1 == "a" or inpl1 == "a-source":
                 line_number = int(inpl[1]) - 1
 
@@ -262,6 +288,13 @@ def wined_main():
                     f.close()
             elif inpl1 == "q" or inpl1 == "quit":
                 sys.exit(0)
+            else:
+                similar = spell_check.do_spell_check(inpl1, langs=[commands])
+                if len(similar) != 0:
+                    print(f'command {inpl1} not found, maybe you mean:')
+
+                    for k, v in similar.items():
+                        print(f"\tcommand <{' '.join(v)}>")
             if source_file_name != "":
                 with open (source_file_name, "r", encoding='utf-8') as f1:
                     rsd = f1.read()

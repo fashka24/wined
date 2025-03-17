@@ -20,8 +20,10 @@ def get_langs():
 
     return lang_sources_result
 
-def do_spell_check(text):
-    langs = get_langs()
+def do_spell_check(text, langs=["no"]):
+    if langs == ["no"]:
+        langs = get_langs()
+    result = {}
     delimiter_pattern = r"[,;_\?!\"\'.\#\@\n]"
 
     text_list = text.split(" ")
@@ -36,4 +38,5 @@ def do_spell_check(text):
                     similar_words = difflib.get_close_matches(txt_p, lang, n=3, cutoff=0.7)
                     # print("1", txt_p) dev log
                     if len(similar_words) != 0:
-                        print(f"<{txt_p}> similar <{', '.join(similar_words)}>")
+                        result.update({txt_p: similar_words})
+    return result
