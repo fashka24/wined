@@ -1,0 +1,13 @@
+bonjour;monde;je;tu;nous;voir;anglais;mot;monde;vu;aller;est allé;imprimer;faire;pendant que;pour;est;avec;importer;utiliser;ouvrir;
+ou;et;si;sinon;instance;de;a;ce;
+avoir;a;eu;faire;fait;prendre;pris;obtenir;obtenu;donner;donne;savoir;savait;pens;pensé;venir;venu;regarder;regardé;vouloir;voulu;
+dire;dit;raconter;raconté;sentir;ressenti;trouver;trouvé;utiliser;utilisé;appeler;appelé;essayer;essayé;travailler;travaillé;sembler;semblé;laisser;laissé;
+mettre;mis;signifier;signifié;garder;gardé;permettre;permis;commencer;commencé;aider;aidé;montrer;montré;entendre;entendu;jouer;joué;
+courir;couru;se déplacer;déplacé;aimer;aimé;vivre;vivé;croire;cru;tenir;tenu;apporter;apporté;écrire;écrit;s'asseoir;assise;se tenir;tenu;
+perdre;perdu;payer;payé;rencontrer;rencontré;inclure;inclus;continuer;continué;établir;établi;apprendre;appris;changer;changé;diriger;dirigé;
+comprendre;compris;regarder;regardé;suivre;suivi;arrêter;arrêté;créer;créé;parler;parlé;lire;lu;permettre;permis;
+ajouter;ajouté;dépenser;dépenser;grandir;grand;ouvrir;ouvert;marcher;marché;gagner;gagné;offrir;offert;se souvenir;souvenu;
+considérer;considéré;apparaître;apparu;acheter;acheté;servir;servi;mourir;mort;envoyer;envoyé;attendre;attendu;construire;construit;
+rester;resté;tomber;tombe;couper;couper;atteindre;atteint;tuer;tuer;rester;resté;suggérer;suggéré;lever;levé;passer;passé;
+vendre;vendu;exiger;exigé;rapporter;rapporté;décider;décidé;tirer;tiré;casser;cassé;expliquer;expliqué;espérer;espéré;
+développer;développé;porter;porté;retourner;retourné;expliquer;expliqué;espérer;espéré;développer;développé;porter;porté;

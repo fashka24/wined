@@ -19,7 +19,7 @@ commands = [
     "s",
     "sn", "st",
     "snt", "stn"
-    "w",
+    "w", "write"
     "lw",
     "wn",
     "f", "find"

@@ -1,2 +1,13 @@
 hello;world;me;i;you;we;see;english;en;word;world;saw;go;went;print;do;while;for;is;with;import;use;open;
 or;and;if;elif;else;instance;of;did;the;a;this;
+have;has;had;make;made;take;took;get;got;give;gave;know;knew;think;thought;come;came;look;looked;want;wanted;
+say;said;tell;told;feel;felt;find;found;use;used;call;called;try;tried;work;worked;seem;seemed;leave;left;
+put;put;mean;meant;keep;kept;let;let;begin;began;help;helped;show;showed;hear;heard;play;played;run;ran;
+move;moved;like;liked;live;lived;believe;believed;hold;held;bring;brought;write;wrote;sit;sat;stand;stood;
+lose;lost;pay;paid;meet;met;include;included;continue;continued;set;set;learn;learned;change;changed;lead;led;
+understand;understood;watch;watched;follow;followed;stop;stopped;create;created;speak;spoke;read;read;allow;
+allowed;add;added;spend;spent;grow;grew;open;opened;walk;walked;win;won;offer;offered;remember;remembered;
+consider;considered;appear;appeared;buy;bought;serve;served;die;died;send;sent;expect;expected;build;built;
+stay;stayed;fall;fell;cut;cut;reach;reached;kill;killed;remain;remained;suggest;suggested;raise;raised;pass;passed;
+sell;sold;require;required;report;reported;decide;decided;pull;pulled;break;broken;explain;explained;hope;hoped;
+develop;developed;carry;carried;return;returned;explain;explained;hope;hoped;develop;developed;carry;carried;

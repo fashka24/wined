@@ -3,7 +3,10 @@
 import re, difflib
 
 lang_paths = [
-    "langs/en.txt"
+    "langs/en.txt",
+    "langs/ru.txt",
+    "langs/fr.txt",
+    "langs/de.txt",
 ]
 
 def get_langs():
@@ -16,6 +19,7 @@ def get_langs():
             f.close()
     lang_sources_result = []
     for lang_source in lang_sources:
+        lang_source = lang_source.replace("\n", "")
         lang_sources_result.append(re.split(delimiter_pattern, lang_source))
 
     return lang_sources_result
