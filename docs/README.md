@@ -23,6 +23,7 @@
 | `f/find [text]`                    | Finds a substring from the text of the file                |
 | `r/replace [word] [text]`          | Replace a word to text                                     | 
 | `dl/delete [line]`                 | Delete line                                                | 
+| `csp/check-spell`                  | Check the spelling                                         | 
 
 ## 📖 Explanations
 

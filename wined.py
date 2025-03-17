@@ -1,4 +1,4 @@
-import os, ast, syntax, sys
+import os, ast, syntax, sys, spell_check
 
 from syntax import BRIGHT_YELLOW
 
@@ -104,6 +104,7 @@ def print_beautifull(text, size = 12123123123):
 
 def wined_main():
     global current
+
     inputer = "> "
     file_source = ""
     source_file_name = ""
@@ -122,11 +123,13 @@ def wined_main():
                     f.close()
             elif inpl1 == "cls" or inpl1 == "clear-screen":
                 os.system("cls" if os.name == "nt" else "clear")
+            elif inpl1 == "csp" or inpl1 == "check-spell":
+                spell_check.do_spell_check(file_source)
             elif inpl1 == "a" or inpl1 == "a-source":
                 line_number = int(inpl[1]) - 1
 
                 print(f" {'-'*11} {len(get_line(file_source, line_number))} bytes {'-'*11}")
-                print(f'{line_number} | {get_line(file_source, line_number)}')
+                print(f'{line_number + 1} | {get_line(file_source, line_number)}')
                 print(f" {"-"*32}")
             elif inpl1 == "s" or inpl1 == "source":
                 print_beautifull(file_source)

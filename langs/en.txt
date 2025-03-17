@@ -1,0 +1,2 @@
+hello;world;me;i;you;we;see;english;en;word;world;saw;go;went;print;do;while;for;is;with;import;use;open;
+or;and;if;elif;else;instance;of;did;the;a;this;

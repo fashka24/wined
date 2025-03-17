@@ -1,0 +1,6 @@
+This is file for test spell checking (csp command)
+hrllo
+ths
+di
+so
+ths
