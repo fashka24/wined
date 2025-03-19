@@ -12,10 +12,17 @@ git clone https://github.com/fashka24/wined.git
 cd wined
 ```
 
-run wined
+run wined (python version)
 
 ```shell
 python ./wined.py
+```
+
+or compile the project and run (cpp version)
+
+```shell
+g++ wined.cpp -o wined.exe
+./wined.exe
 ```
 
 in wined open test file and print it

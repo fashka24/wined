@@ -1,4 +1,4 @@
-import os, ast, syntax, sys, spell_check, runner
+import os, ast, syntax, sys, spell_check, runner, py_debug
 
 from syntax import BRIGHT_YELLOW
 
@@ -6,26 +6,26 @@ RED = "\033[31m"
 RESET = "\033[0m"
 
 commands = [
-    "a",
-    "cls",
-    "cf",
-    "exec",
+    "a", "a-source",
+    "cls", "clear-screen",
+    "cf", "clear-file",
+    "exec", "execute",
     "cl_file",
-    "mkf",
-    "nl",
-    "nlw",
+    "mkf", "make-file",
+    "nl", "new-line",
+    "nlw", "new-line-write",
     "o", "open",
     "rw",
-    "s",
+    "s", "source",
     "sn", "st",
-    "snt", "stn"
-    "w", "write"
-    "lw",
-    "wn",
-    "f", "find"
-    "r",
-    "dl",
-    "csp"
+    "snt", "stn",
+    "w", "write",
+    "lw", "line-write",
+    "wn", "write-nl",
+    "f", "find",
+    "r", "run",
+    "dl", "delete",
+    "csp", "check-spell",
 ]
 def get_syntax_by_filename(filename):
     _, file_extension = os.path.splitext(filename)
@@ -141,7 +141,7 @@ def wined_main():
         try:
             inp = input(inputer).replace("\t", '    ')
             inpl = inp.split(" ")
-            inpl1 = inpl[0]
+            inpl1 = inpl[0].strip()
 
             if inpl1 == "o" or inpl1 == "open":
                 source_file_name = inpl[1]
@@ -197,6 +197,15 @@ def wined_main():
 
                 print(f"""Replaced: {syntax.CYAN}{file_source.count(word)}{RESET}""")
                 file_source = file_source.replace(word, text)
+            elif inpl1 == "svar" or inpl1 == "source-var":
+                vars_ = py_debug.get_variables_and_values_from_code(file_source)
+
+                for k , v in vars_.items():
+                    print(f"{k} = {v}")
+            elif inpl1 == "sf" or inpl1 == "source-f":
+                fs_ = py_debug.get_functions_from_code(file_source)
+
+                print(fs_)
             elif inpl1 == "dl" or inpl1 == "delete":
                 line_number = int(inpl[1]) - 1
 
@@ -325,4 +334,6 @@ def wined_main():
         except Exception as e:
             print(f"{type(e)}: {e}")
 if __name__ == "__main__":
+    print("[wined] version python")
+
     wined_main()

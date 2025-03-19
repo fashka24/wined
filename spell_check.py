@@ -28,7 +28,8 @@ def do_spell_check(text, langs=["no"]):
     if langs == ["no"]:
         langs = get_langs()
     result = {}
-    delimiter_pattern = r"[,;_\?!\"\'.\#\@\n]"
+    ignores = []
+    delimiter_pattern = r"[,;_\?!\"\'.\#\@\n\:)({}]"
 
     text_list = text.split(" ")
     for lang in langs:
@@ -37,10 +38,12 @@ def do_spell_check(text, langs=["no"]):
             text_block = re.split(delimiter_pattern, text_block)
             # print("3", text_block) dev log
             for txt_p in text_block:
-                if not txt_p in lang:
+                if not txt_p in lang and not txt_p in ignores:
                     # print("2", txt_p) dev log
                     similar_words = difflib.get_close_matches(txt_p, lang, n=3, cutoff=0.633)
                     # print("1", txt_p) dev log
                     if len(similar_words) != 0:
                         result.update({txt_p: similar_words})
+                else:
+                    ignores.append(txt_p)
     return result

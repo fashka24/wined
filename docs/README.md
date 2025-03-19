@@ -28,6 +28,13 @@
 | `B/build`                       | Build                                                                              | 
 | `set-args`                      | Set arguments for run                                                              | 
 
+## 🛠️ Commands of python debugger
+
+| Command           | Description                    |
+|-------------------|--------------------------------|
+| `svar/source-var` | Print vars of the program      |
+| `sf/source-f`     | Print functions of the program |
+
 ## 📖 Explanations
 
 - **[line]** - line index

@@ -1,5 +1,5 @@
 hello;world;me;i;you;we;see;english;en;word;world;saw;go;went;print;do;while;for;is;with;import;use;open;
-or;and;if;elif;else;instance;of;did;the;a;this;
+or;and;if;elif;else;instance;of;did;the;a;this;os;cewlar;de;re;write;dutch;france;russian;
 have;has;had;make;made;take;took;get;got;give;gave;know;knew;think;thought;come;came;look;looked;want;wanted;
 say;said;tell;told;feel;felt;find;found;use;used;call;called;try;tried;work;worked;seem;seemed;leave;left;
 put;put;mean;meant;keep;kept;let;let;begin;began;help;helped;show;showed;hear;heard;play;played;run;ran;
